@@ -1,7 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-# All Nexus-related manifests
 resources:
   - nexus-namespace.yaml
   - nexus-operator-subscription.yaml
@@ -10,13 +9,14 @@ resources:
   - nexus-docker-service.yaml
   - nexus-docker-route.yaml
 
-# Generate a ConfigMap from values.env
 configMapGenerator:
   - name: nexus-vars
     envs:
       - values.env
+
 generatorOptions:
   disableNameSuffixHash: true
+
 replacements:
   - source:
       kind: ConfigMap
@@ -39,22 +39,3 @@ replacements:
           name: nexus-registry
         fieldPaths:
           - spec.host
-
-
-# Expose values from ConfigMap as Kustomize vars
-vars:
-  - name: NEXUS_UI_HOST
-    objref:
-      kind: ConfigMap
-      name: nexus-config
-      apiVersion: v1
-    fieldref:
-      fieldPath: data.NEXUS_UI_HOST
-
-  - name: NEXUS_REGISTRY_HOST
-    objref:
-      kind: ConfigMap
-      name: nexus-config
-      apiVersion: v1
-    fieldref:
-      fieldPath: data.NEXUS_REGISTRY_HOST
