@@ -4,7 +4,7 @@ metadata:
   name: nexus-ui
   namespace: nexus
 spec:
-  host: $(NEXUS_UI_HOST)
+  host: "" 
   to:
     kind: Service
     name: nexusrepo-sonatype-nexus-service

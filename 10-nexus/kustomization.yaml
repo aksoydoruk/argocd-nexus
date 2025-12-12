@@ -12,9 +12,34 @@ resources:
 
 # Generate a ConfigMap from values.env
 configMapGenerator:
-  - name: nexus-config
+  - name: nexus-vars
     envs:
       - values.env
+generatorOptions:
+  disableNameSuffixHash: true
+replacements:
+  - source:
+      kind: ConfigMap
+      name: nexus-vars
+      fieldPath: data.NEXUS_UI_HOST
+    targets:
+      - select:
+          kind: Route
+          name: nexus-ui
+        fieldPaths:
+          - spec.host
+
+  - source:
+      kind: ConfigMap
+      name: nexus-vars
+      fieldPath: data.NEXUS_REGISTRY_HOST
+    targets:
+      - select:
+          kind: Route
+          name: nexus-registry
+        fieldPaths:
+          - spec.host
+
 
 # Expose values from ConfigMap as Kustomize vars
 vars:
