@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: nexus-registry
+  namespace: nexus
+spec:
+  host: nexus-registry.apps.69240e6ccc12412aaf622579.cloud.techzone.ibm.com
+  to:
+    kind: Service
+    name: nexus-docker
+  port:
+    targetPort: docker
+  tls:
+    termination: edge

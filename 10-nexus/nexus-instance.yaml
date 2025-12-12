@@ -1,0 +1,9 @@
+apiVersion: sonatype.com/v1alpha1
+kind: NexusRepo
+metadata:
+  name: nexusrepo
+  namespace: nexus
+spec:
+  replicas: 1
+  # Replace with your actual spec from:
+  #   oc get nexusrepo -n nexus -o yaml

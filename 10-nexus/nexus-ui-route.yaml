@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: nexus-ui
+  namespace: nexus
+spec:
+  host: nexus.apps.69240e6ccc12412aaf622579.cloud.techzone.ibm.com
+  to:
+    kind: Service
+    name: nexusrepo-sonatype-nexus-service
+  port:
+    targetPort: application
+  tls:
+    termination: edge
