@@ -4,12 +4,11 @@ metadata:
   name: nexus-docker
   namespace: nexus
 spec:
+  type: ClusterIP
   selector:
     app: sonatype-nexus
-    app.kubernetes.io/instance: nexus
-    app.kubernetes.io/name: nexusrepo-sonatype-nexus
+    release: nexusrepo
   ports:
     - name: docker
       port: 5000
       targetPort: 5000
-  type: ClusterIP
