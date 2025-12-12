@@ -4,7 +4,7 @@ metadata:
   name: nexus-ui
   namespace: nexus
 spec:
-  host: nexus.apps.69240e6ccc12412aaf622579.cloud.techzone.ibm.com
+  host: $(NEXUS_UI_HOST)
   to:
     kind: Service
     name: nexusrepo-sonatype-nexus-service

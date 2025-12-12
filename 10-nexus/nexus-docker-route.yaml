@@ -4,7 +4,7 @@ metadata:
   name: nexus-registry
   namespace: nexus
 spec:
-  host: nexus-registry.apps.69240e6ccc12412aaf622579.cloud.techzone.ibm.com
+  host: $(NEXUS_REGISTRY_HOST)
   to:
     kind: Service
     name: nexus-docker
