@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nexusrepo-sonatype-nexus
+  namespace: nexus
+spec:
+  template:
+    spec:
+      containers:
+        - name: nexus
+          ports:
+            - containerPort: 8081
+              name: http
+            - containerPort: 5000
+              name: docker

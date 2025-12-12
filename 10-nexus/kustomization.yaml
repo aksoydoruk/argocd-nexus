@@ -39,3 +39,6 @@ replacements:
           name: nexus-registry
         fieldPaths:
           - spec.host
+
+patchesStrategicMerge:
+  - nexus-deployment-port-patch.yaml
