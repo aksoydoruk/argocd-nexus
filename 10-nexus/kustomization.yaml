@@ -40,5 +40,3 @@ replacements:
         fieldPaths:
           - spec.host
 
-patchesStrategicMerge:
-  - nexus-deployment-port-patch.yaml
